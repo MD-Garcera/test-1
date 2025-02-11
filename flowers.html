@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stardew Valley</title>
+    <link rel="icon" type="image/png" href="assets/logo.png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="flower-page">
+    <div id="fade-overlay" class="fade-in"></div>
+    <audio id="background-music" loop>
+        <source src="assets/playful.mp3" type="audio/mp3">
+    </audio>
+    <div class="flower-content">
+        <img src="assets/sunflower.png" alt="Sunflower" class="sunflower">
+        <div class="typing-message"></div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Play background music
+            const backgroundMusic = document.getElementById('background-music');
+            backgroundMusic.volume = 0.5; // Set volume to 50%
+            backgroundMusic.play();
+
+            // Existing typing animation code
+            const message = "This sunflower is for you, my love! 🌻✨";
+            const typingMessage = document.querySelector('.typing-message');
+            let i = 0;
+
+            typingMessage.classList.add('typing-animation');
+            
+            function typeWriter() {
+                if (i < message.length) {
+                    typingMessage.textContent += message.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 100);
+                } else {
+                    typingMessage.classList.remove('typing-animation');
+                }
+            }
+
+            setTimeout(typeWriter, 1000);
+        });
+    </script>
+</body>
+</html>

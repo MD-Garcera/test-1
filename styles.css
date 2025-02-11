@@ -233,9 +233,9 @@ canvas {
 
 .no-button {
     color: #BD4D42;
-    position: absolute; /* Change this to relative */
     position: relative;
     transition: all 0.2s ease;
+    transform-origin: center center;
 }
 
 .button-boundary {

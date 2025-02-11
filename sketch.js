@@ -298,6 +298,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const noButton = document.querySelector('.no-button');
     const boundary = document.querySelector('.button-boundary');
     let timeout;
+    let scale = 1; // Initial scale
 
     document.addEventListener('mousemove', (e) => {
         if (!isModalOpen) return;
@@ -306,7 +307,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
         const mouseX = e.clientX;
         const mouseY = e.clientY;
         
-        // Calculate distance between mouse and button center
         const buttonCenterX = noButtonRect.left + noButtonRect.width / 2;
         const buttonCenterY = noButtonRect.top + noButtonRect.height / 2;
         const distance = Math.sqrt(
@@ -314,23 +314,30 @@ document.addEventListener('DOMContentLoaded', (event) => {
             Math.pow(mouseY - buttonCenterY, 2)
         );
 
-        // If mouse is within 100px of the button
         if (distance < 200) {
             clearTimeout(timeout);
             timeout = setTimeout(() => {
                 const boundaryRect = boundary.getBoundingClientRect();
-                
-                // Calculate random position within boundary box
                 const maxX = boundaryRect.width - noButtonRect.width;
                 const maxY = boundaryRect.height - noButtonRect.height;
                 
                 const randomX = Math.random() * maxX;
                 const randomY = Math.random() * maxY;
 
+                // Decrease scale with each move, minimum 0.5
+                scale = Math.max(scale - 0.1, 0.5);
+                
                 noButton.style.left = `${randomX}px`;
                 noButton.style.top = `${randomY}px`;
+                noButton.style.transform = `scale(${scale})`;
             }, 50);
         }
+    });
+
+    // Reset scale when modal is closed
+    document.getElementById('close-button').addEventListener('click', () => {
+        scale = 1;
+        noButton.style.transform = `scale(${scale})`;
     });
 });
 

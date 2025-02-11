@@ -1,0 +1,333 @@
+
+#background-video {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1;
+    object-fit: cover;
+}
+
+.load-button {
+    background: none;
+    border: none;
+    padding: 0;
+    position: relative;
+    cursor: url('assets/hand.png'), pointer;
+    transition: transform 0.2s ease;
+}
+
+.load-button img {
+    width: 100%;
+    height: 100%;
+}
+
+.load-button:hover {
+    transform: scale(1.1);
+    filter: brightness(1.1);
+}
+
+.stardew-title {
+    display: flex;
+    justify-content: center;
+    margin-top: 80px;  /* Adds space between title and button */
+}
+
+.landing-page {
+    display: flex;
+    flex-direction: column;  /* Stack elements vertically */
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+#fade-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+/* For fade out when leaving index.html */
+#fade-overlay.fade-out {
+    opacity: 0;
+    animation: fadeIn 2s ease-in-out forwards;
+}
+
+/* For fade in when entering game.html */
+#fade-overlay.fade-in {
+    opacity: 1;
+    animation: fadeOut 2s ease-in-out forwards;
+}
+
+@font-face {
+    font-family: 'StardewValley';
+    src: url('fonts/StardewValley.ttf') format('truetype'),
+         url('fonts/StardewValley.otf') format('opentype');
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    cursor: url('assets/cursor.png'), auto;
+}
+
+.mailbox-hover {
+    cursor: url('assets/hand.png'), pointer !important;
+}
+
+canvas {
+    display: block;
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+}
+
+.e-key-hint {
+    position: absolute;
+    color: red;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.ui-element {
+    position: fixed;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+#tools.ui-hidden {
+    opacity: 0;
+}
+
+#clock {
+    top: 20px;
+    right: 20px;
+    width: 317px;
+    height: 261px;
+}
+
+#tools {
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 796px;
+    height: 115px;
+}
+
+#energy {
+    bottom: 20px;
+    right: 20px;
+    width: 66px;
+    height: 258px;
+}
+
+/* ...existing code... */
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.hidden {
+    display: none;
+    opacity: 0;
+}
+
+.modal-content {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    transform: scale(0.85);
+    transition: transform 0.3s ease;
+}
+
+.close-button {
+    position: absolute;
+    top: -15px;
+    right: -20px;
+    cursor: pointer;
+    z-index: 1001;
+    transition: transform 0.2s ease;
+}
+
+.close-button:hover {
+    transform: scale(1.1);
+}
+
+.modal-message {
+    position: absolute;
+    font-family: 'StardewValley';
+    color: #7B4A27;
+    font-size: 56px;
+    text-align: center;
+    max-width: 80%;
+    line-height: 1.5;
+    padding: 20px;
+    top: 20px;
+}
+
+.modal-buttons {
+    position: absolute;
+    bottom: 10px;
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    width: 100%;
+}
+
+.stardew-button {
+    font-family: 'StardewValley';
+    font-size: 32px;
+    padding: 10px 40px;
+    border: none;
+    background: url('assets/button.png') no-repeat center/100% 100%;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.stardew-button {
+    font-family: 'StardewValley';
+    transform: scale(1.1);
+    font-size: 46px;
+    padding: 8px 40px;
+    border: none;
+    background: url('assets/button.png') no-repeat center/100% 100%;
+    cursor: url('assets/hand.png'), pointer;  /* Add this line */
+    transition: transform 0.2s ease;
+}
+
+.yes-button {
+    color: #3A6615;
+}
+
+.yes-button:hover {
+    transform: scale(1.1);
+    filter: brightness(1.1);
+}
+
+.no-button {
+    color: #BD4D42;
+    position: absolute; /* Change this to relative */
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.button-boundary {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 48%;
+    height: 60%;
+    /* border: 1px solid red; */
+}
+
+h2 {
+    font-family: 'StardewValley';
+    font-size: 64px;
+    color: #7B4A27;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+        pointer-events: none;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+        pointer-events: none;
+    }
+}
+
+.flower-page {
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.flower-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.sunflower {
+    width: 300px;
+    height: auto;
+    animation: float 3s ease-in-out infinite;
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.7));  /* Golden glow */
+    animation: float 3s ease-in-out infinite, glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.7));
+    }
+    to {
+        filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.9));
+    }
+}
+
+.typing-message {
+    margin-top: 50px;
+    font-family: 'StardewValley';
+    font-size: 56px;
+    color: #FFC100;
+    min-height: 40px;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+.typing-animation::after {
+    content: '|';
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}

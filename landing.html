@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stardew Valley</title>
+    <link rel="icon" type="image/png" href="assets/logo.png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="landing-page">
+    <video autoplay muted loop id="background-video">
+        <source src="assets/background_stardew.mp4" type="video/mp4">
+    </video>
+    <div id="fade-overlay"></div>
+    <audio id="background-music" loop>
+        <source src="assets/opening.mp3" type="audio/mp3">
+    </audio>
+    <div class="stardew-title">
+        <img src="assets/stardew_title.png" alt="Stardew Valley Title">
+    </div>
+    <button class="load-button" onclick="handleLoadGame()">
+        <img src="assets/load_button.png" alt="Load Game">
+    </button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const backgroundMusic = document.getElementById('background-music');
+            backgroundMusic.volume = 0.5; // Set volume to 50%
+            backgroundMusic.play();
+        });
+    
+        function handleLoadGame() {
+            const overlay = document.getElementById('fade-overlay');
+            overlay.classList.add('fade-out');
+            
+            setTimeout(() => {
+                window.location.href = 'game.html';
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
